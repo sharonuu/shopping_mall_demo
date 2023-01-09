@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+{% endblock head %}
+
+{% block center_body %}
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="{% url "df_goods:index" %}">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">手机Look Fantastic</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">抽奖</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="center_con clearfix">
+		<ul class="subnav fl">
+			<li><a href="#model01" class="fruit">化妆品</a></li>
+			<li><a href="#model02" class="seafood">护肤品</a></li>
+			<li><a href="#model03" class="meet">个人清洁用品</a></li>
+			<li><a href="#model04" class="egg">礼盒套装</a></li>
+			<li><a href="#model05" class="vegetables">衣服</a></li>
+			<li><a href="#model06" class="ice">饰品</a></li>
+		</ul>
+		<div class="slide fl">
+			<ul class="slide_pics">
+				<li><img src="/static/images/slide.jpeg" alt="幻灯片"></li>
+				<li><img src="/static/images/slide2.jpg" alt="幻灯片"></li>
+				<li><img src="/static/images/slide3.png" alt="幻灯片"></li>
+				<li><img src="/static/images/slide4.jpg" alt="幻灯片"></li>
+			</ul>
+			<div class="prev"></div>
+			<div class="next"></div>
+			<ul class="points"></ul>
+		</div>
+		<div class="adv fl">
+			<a href="#"><img src="/static/images/adv1.jpg"></a>
+			<a href="#"><img src="/static/images/adv2.png"></a>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model01">化妆品</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+			<a href="#">粉底液</a>
+			<a href="#">卸妆水</a>
+     		<a href="#">眼影</a>
+                {#                {% for g in type01 %} #}
+{#                  <a href="/{{ g.id }}/">{{  g.gtitle|slice:'10' }}</a> #}
+{#                    这里建立一个点击量前四位的商品的链接#}
+{#                    模板过滤器slice, 取变量前 N 个字符，可用于中文 #}
+ {#                {%  endfor %} #}
+			</div>
+			<a href="/list1_1_1/" class="goods_more fr" id="fruit_more">查看更多 ></a>
+		</div>
+
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/banner1.jpg"></div>
+			<ul class="goods_list fl">
+{#				<li>#}
+{#					<h4><a href="#">Natasha Denona Bronze Palette眼影</a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods11.jpg"></a>#}
+{#					<div class="prize">¥ 520.00</div>#}
+{#				</li>#}
+{#                <li>#}
+{#					<h4><a href="#">Illamasqua Beyond 粉底液 30ml </a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods12.jpg"></a>#}
+{#					<div class="prize">¥ 229.80</div>#}
+{#				</li>#}
+{#                <li>#}
+{#					<h4><a href="#">NYX 双头修容棒 </a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods13.jpg"></a>#}
+{#					<div class="prize">¥ 95.70</div>#}
+{#				</li>#}
+{#                 <li>#}
+{#					<h4><a href="#">露华浓哑光之上超光泽唇膏 </a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods14.jpg"></a>#}
+{#					<div class="prize">¥ 46.57</div>#}
+{#				</li>#}
+                {% for goods in type0 %}
+{#                    按照商品的最新上穿建立显示#}
+                <li>
+                    <h4><a href="/{{ goods.id }}/">{{ goods.gtitle }}</a></h4>
+                    <a href="/{{ goods.id }}/"><img src="{{ MEDIA_URL }}{{ goods.gpic }}"></a>
+                    <div class="prize"> ￥ {{ goods.gprice }} </div>
+                </li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model02">护肤品</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="#">精华</a>
+				<a href="#">眼霜</a>
+                <a href="#">面霜</a>
+ {#                 {% for g in type1 %}  #}
+  {#                     <a href="/{{ g.id }}/">{{ g.gtitle|slice:'10' }}</a>  #}
+   {#                {% endfor %}   #}
+			</div>
+			<a href="/list2_1_1/" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/banner2.jpg"></div>
+			<ul class="goods_list fl">
+{#            <li>#}
+{#					<h4><a href="#">雅顿粉胶 60粒</a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods15.jpg"></a>#}
+{#					<div class="prize">¥ 469.00</div>#}
+{#				</li>#}
+{#                <li>#}
+{#					<h4><a href="#">PIXI Glow Tonic 100ml </a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods16.jpg"></a>#}
+{#					<div class="prize">¥ 87.80</div>#}
+{#				</li>#}
+{#                <li>#}
+{#					<h4><a href="#">PIXI DetoxifEYE 水凝胶净肤眼膜</a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods17.jpg"></a>#}
+{#					<div class="prize">¥ 215.00</div>#}
+{#				</li>#}
+{#                 <li>#}
+{#					<h4><a href="#">NIOD 多分子透明质酸复合液 15ml</a></h4>#}
+{#					<a href="#"><img src="/static/df_goods/goods18.jpg"></a>#}
+{#					<div class="prize">¥ 217.50</div>#}
+{#				</li>#}
+                {% for goods in type11 %}
+                <li>
+                    <h4><a href="/{{ goods.id }}/">{{ goods.gtitle }}</a></h4>
+                    <a href="/{{ goods.id }}/"><img src="{{ MEDIA_URL }}{{ goods.gpic }}"></a>
+                    静态文件添加目录static前一定加"/"
+                    <div class="prize"> ￥ {{ goods.gprice }} </div>
+                </li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model03">个人清洁用品</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="#">卡诗洗发水</a>
+				<a href="#">Aveeno个人洗护套装</a>
+				<a href="#">Grow Gorgeous护发素</a>
+			</div>
+			<a href="#" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/banner3.jpeg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="#">Christophe Robin磨砂膏</a></h4>
+					<a href="#"><img src="/static/images/goods00.jpg"></a>
+					<div class="prize">¥ 400.00</div>
+				</li>
+				<li>
+					<h4><a href="#">Philip Kingsley菲利金斯利弹力素深层修护霜 150ml</a></h4>
+					<a href="#"><img src="/static/images/goods1.jpg"></a>
+					<div class="prize">¥ 295.80</div>
+				</li>
+				<li>
+					<h4><a href="#">Tangle Teezer天使梳大号桨形吹发造型顺发梳 - 粉色</a></h4>
+					<a href="#"><img src="/static/images/goods2.jpg"></a>
+					<div class="prize">¥ 229.00</div>
+				</li>
+				<li>
+					<h4><a href="#">Aquis 单色奢华款干发帽 | 白色</a></h4>
+					<a href="#"><img src="/static/images/goods000.jpg"></a>
+					<div class="prize">¥ 261.00</div>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model04">礼盒套装</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="#">111skin</a>
+				<a href="#">BIOEFFECT EGF 精华礼盒 2020</a>
+				<a href="#">Murad Retinol Perfected</a>
+			</div>
+			<a href="#" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/banner40.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="#">圣诞节套装</a></h4>
+					<a href="#"><img src="/static/images/pro2.jpg"></a>
+					<div class="prize">¥ 799.00</div>
+				</li>
+				<li>
+					<h4><a href="#">春天护肤套装</a></h4>
+					<a href="#"><img src="/static/images/pro1.jpg"></a>
+					<div class="prize">¥ 199.00</div>
+				</li>
+				<li>
+					<h4><a href="#">Natura Bisse Beauty Lovers Set</a></h4>
+					<a href="#"><img src="/static/images/pro3.jpg"></a>
+					<div class="prize">¥ 1696.5.00</div>
+				</li>
+				<li>
+					<h4><a href="#">BIOEFFECT Total Rejuvenation Skin Care Set</a></h4>
+					<a href="#"><img src="/static/images/pro4.jpg"></a>
+					<div class="prize">¥ 1827.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model05">衣服</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="#">上衣</a>
+				<a href="#">下装</a>
+				<a href="#">帽子</a>
+			</div>
+			<a href="#" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/banner5.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="#">CHRISTY HOODIE</a></h4>
+					<a href="#"><img src="/static/images/goods07.png"></a>
+					<div class="prize">¥ 200.00</div>
+				</li>
+				<li>
+					<h4><a href="#">NIKE BLAZER MID '77 VNTG</a></h4>
+					<a href="#"><img src="/static/images/goods08.png"></a>
+					<div class="prize">¥ 899.00</div>
+				</li>
+				<li>
+					<h4><a href="#">FILA × MIHARA联名女子连衣裙</a></h4>
+					<a href="#"><img src="/static/images/goods09.jpg"></a>
+					<div class="prize">¥ 500.00</div>
+				</li>
+				<li>
+					<h4><a href="#">女子轻商务短袖T</a></h4>
+					<a href="#"><img src="/static/images/goods10.jpg"></a>
+					<div class="prize">¥ 500.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model06">饰品</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="#">手链</a>
+				<a href="#">耳环</a>
+				<a href="#">项链</a>
+			</div>
+			<a href="#" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/banner6.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="#">SWAROVSKI SYMBOLIC ELEPHANT 手链</a></h4>
+					<a href="#"><img src="/static/images/goods03.jpeg"></a>
+					<div class="prize">¥ 500.00</div>
+				</li>
+				<li>
+					<h4><a href="#">CRYSTAL FROST 腕表</a></h4>
+					<a href="#"><img src="/static/images/goods04.jpeg"></a>
+					<div class="prize">¥ 1000.00</div>
+				</li>
+				<li>
+					<h4><a href="#">TAROT SWALLOW 手袋坠饰</a></h4>
+					<a href="#"><img src="/static/images/goods05.jpeg"></a>
+					<div class="prize">¥ 100.00</div>
+				</li>
+				<li>
+					<h4><a href="#">LINE FRIENDS TENNIS 穿孔耳环</a></h4>
+					<a href="#"><img src="/static/images/goods06.jpeg"></a>
+					<div class="prize">¥ 120.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+    <script type="text/javascript">
+        BCSlideshow('focuspic');
+        var oFruit = document.getElementById('fruit_more');
+        var oShownum = document.getElementById('show_count');
+
+        var hasorder = localStorage.getItem('order_finish');
+
+        if(hasorder)
+        {
+        oShownum.innerHTML = '2';
+        }
+
+        oFruit.onclick = function(){
+        window.location.href = 'list.html';
+        }
+    </script>
+
+{% endblock center_body %}
